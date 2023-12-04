@@ -3,9 +3,19 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author professor
+ *
+ */
 // All JavaFX applications must extend the Application class, which is abstract.
 public class JavaFXExample extends Application {
 
+	/**
+	 * main method
+	 * @param args
+	 * arguments
+	 */
 	public static void main(String[] args) {
 		// Launch the application. This method creates a JavaFXExample object
 		// and calls its start method.
@@ -19,6 +29,10 @@ public class JavaFXExample extends Application {
 	// stage of the application. This stage is the window that displays the
 	// application content.
 	@Override
+	
+	/**
+	 * start method
+	 */
 	public void start(Stage primaryStage) throws Exception {
 
 		// The graphical components of a JavaFX application are stored in

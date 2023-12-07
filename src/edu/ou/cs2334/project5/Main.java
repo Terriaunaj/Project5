@@ -1,5 +1,9 @@
 package edu.ou.cs2334.project5;
 
+
+
+import java.util.List;
+
 import edu.ou.cs2334.project5.presenters.NonogramMakerPresenter;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -7,8 +11,8 @@ import javafx.stage.Stage;
 
 /**
  * Main class
- * @author terriaunajames
- * Extends Application
+ * 
+ * @author terriaunajames Extends Application
  */
 public class Main extends Application {
 
@@ -21,8 +25,8 @@ public class Main extends Application {
 
 	/**
 	 * main method
-	 * @param args
-	 * arguments
+	 * 
+	 * @param args arguments
 	 */
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -30,14 +34,17 @@ public class Main extends Application {
 
 	@Override
 	/**
-	 * Start method
-	 * Starts the application
+	 * Start method Starts the application
 	 */
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		getParameters();
+		
+//		List<String> stuff = getParameters().getRaw();
+//		int numRows = Integer.parseInt(stuff.get(IDX_NUM_ROWS));
+//		int numCols = Integer.parseInt(stuff.get(IDX_NUM_COLS));
+//		int cellSize = Integer.parseInt(stuff.get(IDX_CELL_SIZE));
 
-		NonogramMakerPresenter nano = new NonogramMakerPresenter(IDX_NUM_ROWS, IDX_NUM_COLS, IDX_CELL_SIZE);
+		NonogramMakerPresenter nano = new NonogramMakerPresenter(10, 10, 50);
 
 		Scene scene = new Scene(nano.getPane());
 		primaryStage.setScene(scene);

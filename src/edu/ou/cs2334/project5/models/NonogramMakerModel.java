@@ -34,16 +34,15 @@ public class NonogramMakerModel {
 	 * NonogramMakerModel constructor int,int
 	 * Creates boolean array with total number of rows and columns
 	 */
-	public NonogramMakerModel(int numRows, int numCols) {
-		this.numRows = numRows;
-		this.numCols = numCols;
+	public NonogramMakerModel(int numRows, int numCols) throws IllegalArgumentException{
 		
-		if(numRows > 0 && numCols > 0) {
-			grid = new boolean[numRows*numCols];
-		}	
-		else {
+		if(numRows <= 0 || numCols <= 0) {
 			throw new IllegalArgumentException();
 		}
+		
+		this.numRows = numRows;
+		this.numCols = numCols;
+		grid = new boolean[numRows*numCols];
 	}
 		
 	/**
@@ -101,8 +100,6 @@ public class NonogramMakerModel {
 	 * NonogramMakerModel constructor filename
 	 */
 	public NonogramMakerModel(String filename) throws IOException {
-//		String content = Files.readAllLines(Paths.get(filename)).stream().collect(Collectors.joining("\n"));
-//	    System.out.println(content);
 		this(new File(filename));
 	}
 	

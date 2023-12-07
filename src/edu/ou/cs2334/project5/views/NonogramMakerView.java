@@ -28,15 +28,15 @@ public class NonogramMakerView {
 	/**
 	 * Variable declarations
 	 */
-	public String MENU_ITEM_OPEN = "MENU_ITEM_OPEN";
+	public static String MENU_ITEM_OPEN = "MENU_ITEM_OPEN";
 	/**
 	 * Variable declarations
 	 */
-	public String MENU_ITEM_SAVE = "MENU_ITEM_SAVE";
+	public static String MENU_ITEM_SAVE = "MENU_ITEM_SAVE";
 	/**
 	 * Variable declarations
 	 */
-	public String MENU_ITEM_EXIT = "MENU_ITEM_EXIT";
+	public static String MENU_ITEM_EXIT = "MENU_ITEM_EXIT";
 	
 	/**
 	 * NonogramMakerView constructor
@@ -49,6 +49,7 @@ public class NonogramMakerView {
 	public NonogramMakerView(int numRows, int numCols, int cellLength) {
 		borderPane = new BorderPane();
 		cellGridView = new CellGridView(numRows, numCols, cellLength);
+		menuItemsMap  = new HashMap<String,MenuItem>();
 		initMenuBar();
 		borderPane.setTop(menuBar);
 		borderPane.setCenter(cellGridView.getPane());
@@ -91,6 +92,7 @@ public class NonogramMakerView {
 	 * border pane
 	 */
 	public Pane getPane() {
+		
 		return borderPane;
 	}
 	/**

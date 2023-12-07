@@ -39,9 +39,6 @@ public class ToggleButtonEventHandler implements EventHandler<ActionEvent>{
 	 */
 	public void handle(ActionEvent event) {
 		ToggleButton tb = new ToggleButton();
-		if(tb.isSelected()) {
-			model.setCell(rowIdx, colIdx, tb.isSelected());
-		}
-		//GET CHECKED
+		model.setCell(rowIdx, colIdx, !(tb.isSelected()));
 	}
 }

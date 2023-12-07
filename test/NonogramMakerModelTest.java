@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import edu.ou.cs2334.project4.models.NonogramMakerModel;
+import edu.ou.cs2334.project5.models.NonogramMakerModel;
 
 class NonogramMakerModelTest {
 

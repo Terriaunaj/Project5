@@ -31,6 +31,8 @@ public class CellGridView {
 		this.numRows = numRows;
 		this.numCols = numCols;
 		
+		gridButtons = new ArrayList<ToggleButton>();
+		gridPane = new GridPane();
 		gridPane.setAlignment(Pos.CENTER);
 		
 		initButtons(numRows,numCols,cellLength);
@@ -41,6 +43,7 @@ public class CellGridView {
 	 * @param numRows number of rows
 	 * @param numCols number of columns
 	 * @param cellLength the length of the cell
+	 * creates buttons according to the given parameters
 	 */
 	public void initButtons(int numRows, int numCols, int cellLength) {
 		this.numRows = numRows;
@@ -49,7 +52,23 @@ public class CellGridView {
 		gridButtons.clear();
 		gridPane.getChildren().clear();
 		
-		//FINNIIIISHHHHHHH
+		for(int i = 0; i < numRows; i++) {
+			for(int j = 0; j < numCols; j++) {
+			
+				ToggleButton tb = new ToggleButton();
+				
+				tb.setMaxWidth(cellLength);
+				tb.setMinWidth(cellLength);
+				tb.setPrefWidth(cellLength);
+				
+				tb.setMaxHeight(cellLength);
+				tb.setMinHeight(cellLength);
+				tb.setPrefHeight(cellLength);
+				
+				gridButtons.add(tb);
+				gridPane.add(tb, j, i);
+			}
+		}
 	}
 	/**
 	 * getNumRows
@@ -75,7 +94,7 @@ public class CellGridView {
 	 * togglebutton with given row and col
 	 */
 	public ToggleButton getToggleButton(int row, int col) {
-		return getToggleButton(row, col);
+		return gridButtons.get(row*this.numCols+col);
 	}
 	/**
 	 * getPane

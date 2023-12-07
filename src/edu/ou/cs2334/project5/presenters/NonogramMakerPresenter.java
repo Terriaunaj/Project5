@@ -1,14 +1,19 @@
 package edu.ou.cs2334.project5.presenters;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import edu.ou.cs2334.project5.handlers.OpenHandler;
+import edu.ou.cs2334.project5.handlers.SaveHandler;
+import edu.ou.cs2334.project5.handlers.ToggleButtonEventHandler;
 import edu.ou.cs2334.project5.interfaces.Openable;
 import edu.ou.cs2334.project5.interfaces.Saveable;
 import edu.ou.cs2334.project5.models.NonogramMakerModel;
 import edu.ou.cs2334.project5.views.NonogramMakerView;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Window;
 
 /**
@@ -45,7 +50,7 @@ public class NonogramMakerPresenter implements Openable, Saveable{
 	/**
 	 * Window 
 	 * @return
-	 * returns the views panes scence window
+	 * returns the views panes scene window
 	 */
 	private Window getWindow() {
 		try {
@@ -86,7 +91,19 @@ public class NonogramMakerPresenter implements Openable, Saveable{
 	 * matches the models cell state
 	 */
 	private void bindToggleButtons() {
-		//FINISH
+		
+		int rows = view.getNumRows();
+		int cols = view.getNumCols();
+		
+		for(int rowIdx = 0; rowIdx < rows; rowIdx++) {
+			for(int colIdx = 0; colIdx < cols; colIdx++) {
+				
+				ToggleButton tb = view.getToggleButton(rowIdx, colIdx);
+				
+				tb.setSelected(model.getCell(rowIdx, colIdx));
+				tb.setOnAction(new ToggleButtonEventHandler(model, rowIdx,colIdx));
+			}
+		}
 	}
 	
 	/**
@@ -94,7 +111,20 @@ public class NonogramMakerPresenter implements Openable, Saveable{
 	 * sets the event handler for the open and save buttons
 	 */
 	private void configureMenuItems() {
-		//FINISH
+		
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open");
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"));
+		fileChooser.setInitialDirectory(new File("."));
+		view.getMenuItem(NonogramMakerView.MENU_ITEM_OPEN)
+		    .setOnAction(new OpenHandler(getWindow(), fileChooser, this));
+		
+		FileChooser fileChooserTwo = new FileChooser();
+		fileChooserTwo.setTitle("Save");
+		fileChooserTwo.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"));
+		fileChooserTwo.setInitialDirectory(new File("."));
+		view.getMenuItem(NonogramMakerView.MENU_ITEM_SAVE)
+		    .setOnAction(new SaveHandler(getWindow(), fileChooserTwo, this));
 	}
 	
 	/**
